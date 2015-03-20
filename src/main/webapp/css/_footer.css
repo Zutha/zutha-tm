@@ -1,0 +1,23 @@
+/**************** Bottom Quick Links Bar *********************/
+ul.quick_links {
+    list-style-type:none;
+    margin-bottom:0.5em;
+    margin-top:30px;
+    padding-left:0;
+    text-align:center;
+    font-size: 90%;
+}
+ul.quick_links li{
+    display:inline;
+}
+ul.quick_links li:before {
+    content: "\0020 | \0020";
+    padding-right:2px;
+}
+.quick_links li:first-child:before {
+    content: "";
+}
+.copyright{
+    text-align:center;
+    font-size:90%;
+}

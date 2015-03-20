@@ -1,0 +1,27 @@
+.association-table table {
+    clear: left;
+    margin-top: 2em;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+}
+
+.association-table th {
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-bottom: 1px solid #EFEFEF;
+    padding: 0.5em 0.3em;
+}
+.association-table td {
+    padding: 0.5em 0.15em;
+}
+.association-table tr {
+    border-bottom: 1px solid #EFEFEF;
+}
+.association-table tbody tr:last-child{
+    border-bottom: 0;
+}
+

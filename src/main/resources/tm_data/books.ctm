@@ -1,0 +1,105 @@
+# ==================== Item Types ====================
+
+# WRITTEN WORK
+zsi:written-work %zid%; isa zsi:entity-type;
+    has-trait(zsi:role,%zid%);
+    kind-of(zsi:zutha-object,%zid%);
+
+    name("Written Work",%zid%);
+
+    plays-role(zsi:written-work,
+        zsi:authorship,1,1,%zid%);
+.
+
+# BOOK
+zsi:book %zid%; isa zsi:entity-type;
+    has-trait(zsi:role,%zid%);
+    kind-of(zsi:written-work,%zid%);
+
+    name("Book",%zid%);
+
+    plays-role(zsi:book,
+        zsi:book-series-membership,0,1,%zid%);
+.
+
+# ARTICLE
+zsi:article %zid%; isa zsi:entity-type;
+    kind-of(zsi:written-work,%zid%);
+
+    name("Article (Written Work)",%zid%);
+    name("Article",zsi:written-work,%zid%);
+.
+
+# BOOK SERIES
+zsi:book-series %zid%; isa zsi:entity-type;
+    has-trait(zsi:role,%zid%);
+    kind-of(zsi:written-work,%zid%);
+
+    name("Book Series",%zid%);
+
+    plays-role(zsi:book-series,
+        zsi:book-series-membership,1,*,%zid%);
+.
+
+# ==================== Traits ====================
+
+# AUTHOR
+zsi:author %zid%; isa zsi:trait;
+    has-trait(zsi:role,%zid%);
+
+    name("Author",%zid%);
+    name("Co-Authors",zsi:author,%zid%);
+
+    plays-role(zsi:author,
+        zsi:authorship,0,*,%zid%);
+.
+
+# ==================== Association Types ====================
+
+# AUTHORSHIP
+zsi:authorship %zid%; isa zsi:reified-association-type;
+    kind-of(zsi:reified-association,%zid%);
+
+    name("Authorship",%zid%);
+    name("Written By",zsi:written-work,%zid%);
+    name("Works Written",zsi:author,%zid%);
+
+    has-role(zsi:author,1,*,%zid%);
+    has-role(zsi:written-work,1,1,%zid%);
+.
+def written-by($work, $author, $reifier)
+    $reifier isa zsi:authorship.
+    zsi:authorship(
+        zsi:author: $author,
+        zsi:written-work: $work
+    ) ~ $reifier
+end
+def written-by($work, $author1, $author2, $reifier)
+    $reifier isa zsi:authorship.
+    zsi:authorship(
+        zsi:author: $author1,
+        zsi:author: $author2,
+        zsi:written-work: $work
+    ) ~ $reifier
+end
+
+# BOOK SERIES MEMBERSHIP
+zsi:book-series-membership %zid%; isa zsi:reified-association-type;
+    kind-of(zsi:reified-association,%zid%);
+
+    name("Book Series Membership",%zid%);
+    name("Member of Series",zsi:book,%zid%);
+    name("Included Works",zsi:book-series,%zid%);
+
+    has-role(zsi:book-series,1,1,%zid%);
+    has-role(zsi:book,1,1,%zid%);
+.
+def member-of($book, $series, $reifier)
+    $reifier isa zsi:book-series-membership.
+    zsi:book-series-membership(
+        zsi:book: $book,
+        zsi:book-series: $series
+    ) ~ $reifier
+end
+
+# ==================== Property Types ====================

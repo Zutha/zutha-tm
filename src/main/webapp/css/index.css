@@ -1,0 +1,26 @@
+.homepage-header {
+    background: #64768F;
+    background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#7d92b2),to(#64768f));
+    background-image: -moz-linear-gradient(0% 55% 90deg,#64768f,#7d92b2);
+    background-repeat: repeat;
+    color: white;
+    text-align: center;
+    padding: 1.5em 0;
+    clear: both;
+    overflow: hidden;
+}
+
+.homepage-header-title {
+    font-weight: normal;
+    float: left;
+    display: inline-block;
+    width: 100%;
+    text-shadow: #5C6C84 2px 2px 3px;
+    font-size: 1.6em;
+}
+
+.intro-video {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    width: 660px;
+}

@@ -1,0 +1,77 @@
+a:link, a:visited {
+    text-decoration: none;
+    color: #1170A3;
+}
+a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Currency Icons */
+span.currency_icon{
+    float:left;
+    width:12px;
+}
+.currency_icon img{
+    float:right;
+    height:1em;
+}
+
+/* rounded corners */
+.rounded {
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    -khtml-border-radius:15px;
+}
+
+/* Headings */
+h1{
+    margin:2px;
+    font-size:1.7em;
+}
+h2{
+    margin:0;
+    font-size:1.1em;
+    font-weight:700;
+}
+h3{
+    margin:0;
+    font-size:1em;
+    font-weight:600;
+}
+
+/* Linear Lists */
+ul.linear{
+    list-style-type: none;
+    display:inline;
+    padding-left:0;
+    margin:0 0;
+    line-height: 1.4;
+    font-size: 1em;
+}
+ul.linear li{
+    display:inline-block;
+}
+.linear .value {
+    list-style: none;
+    color: #333;
+}
+
+/* Inline headings */
+.inline{
+    display:inline;
+    margin:0;
+}
+
+/* Lift Msgs */
+#lift__noticesContainer___notice {
+    background-color: green;
+}
+
+#lift__noticesContainer___warning {
+    background-color: yellow;
+}
+
+#lift__noticesContainer___error {
+    background-color: red;
+}

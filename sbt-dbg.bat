@@ -1,0 +1,1 @@
+java -Xmx512M -XX:MaxPermSize=256M -noverify -javaagent:"C:\Program Files (x86)\ZeroTurnaround\JRebel\jrebel.jar" -Drebel.lift_plugin=true -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8765  -jar "D:\Programs\Simple Build Tool\sbt-launch.jar" 

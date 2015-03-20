@@ -1,0 +1,62 @@
+#control_bar{
+    overflow: hidden;
+    position:relative;
+    border-bottom: black solid 1.5px;
+    padding:2px;
+}
+/* Zutha Logo */
+#logo{
+    float:left;
+    height:3.8em;
+}
+
+/* Login Status */
+#loginStatus {
+    float:right;
+    font-size: 75%;
+    text-align:right;
+}
+
+
+/* User Money Stats */
+#user_stats{
+    display:block;
+    float:left;
+    margin-left: 10px;
+}
+#user_stats p{
+    margin:2px 1px;;
+    overflow:hidden;
+}
+#user_stats p span{
+    float:left;
+}
+#user_stats span.currency_type{
+    width:3em;
+    text-align: right;
+    font-weight: bold;
+}
+#user_stats span.zuth, #user_stats span.money{
+    min-width:6em;
+    font-weight:bold;
+}
+
+/* Search Form */
+#search_form {
+    float:right;
+    clear:right;
+    margin-top:0.8em;
+}
+#search_form .search_button{
+    float:right;
+    width:60px;
+}
+#search_form .search_box{
+    width:450px;
+    float:right;
+}
+#search_form .search_box input{
+    width:98%;
+    margin: auto;
+}
+

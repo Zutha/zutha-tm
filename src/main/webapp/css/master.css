@@ -1,0 +1,77 @@
+body {
+    font-size: 80%;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    background: #F1F2F3;
+    color: #666;
+    margin: 0;
+}
+
+/**************** Toolbar *********************/
+#toolbar{
+    height:2em;
+}
+
+#edit{
+    float:right;
+}
+#edit form{
+    float:right;
+    margin-right:2px;
+}
+#edit form input[type="submit"]{
+    width: 4em;
+    height: 2em;
+}
+
+/**************** Containers *********************/
+/* Login Box */
+#loginCurtain {
+    position:absolute;
+    z-index: 998;
+    top: 0px;
+    left: 0px;
+    width:110%;
+    height:110%;
+    background-color: black;
+    opacity: 0.5;
+}
+#loginLayer{
+    position:absolute;
+    z-index: 999;
+    width:100%;
+}
+
+#outer_container {
+    font-family:arial;
+    margin:1px auto 5px;
+    max-width:980px;
+    min-width:100px;
+
+}
+
+#container {
+    padding: 10px 10px 40px;
+    background-color: #DDF;
+    border-color: #CCF;
+    border-style: solid;
+    border-width: 1px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    -khtml-border-radius:15px;
+}
+
+.item {
+    position:relative;
+    padding:10px 10px 4px;
+    margin-bottom: 10px;
+    
+    background-color:white;
+    border-color: #CCF;
+    border-style: solid;
+    border-width: 1px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    -khtml-border-radius:15px;
+}

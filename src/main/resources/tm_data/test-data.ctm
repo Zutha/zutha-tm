@@ -1,0 +1,53 @@
+#------------------ Authors -----------------
+# Robert Jordan
+robert-jordan %zid%; isa zsi:person;
+    has-trait(zsi:author,%zid%);
+
+    name("Robert Jordan",%zid%);
+.
+
+# Raymond E. Feist
+raymond-feist %zid%; isa zsi:person;
+    has-trait(zsi:author,%zid%);
+
+    name("Raymond E. Feist",%zid%);
+.
+
+# Janny Wurts
+janny-wurts %zid%; isa zsi:person;
+    has-trait(zsi:author,%zid%);
+
+    name("Janny Wurts",%zid%);
+.
+
+#------------------ Books -----------------
+
+# Magician
+magician %zid%; isa zsi:book;
+    name("Magician",%zid%);
+    written-by(raymond-feist, %zid%);
+.
+# Daughter of the Empire
+daughter-of-the-empire %zid%; isa zsi:book;
+    name("Daughter of the Empire",%zid%);
+    written-by(raymond-feist, janny-wurts, %zid%);
+.
+# The Eye of the World
+eye-of-the-world %zid%; isa zsi:book;
+    name("The Eye of the World",%zid%);
+    written-by(robert-jordan, %zid%);
+    member-of(wheel-of-time, %zid%);
+.
+# The Great Hunt
+great-hunt %zid%; isa zsi:book;
+    name("The Great Hunt",%zid%);
+    written-by(robert-jordan, %zid%);
+    member-of(wheel-of-time, %zid%);
+.
+
+#------------------ Book Series -----------------
+# The Wheel of Time
+wheel-of-time %zid%; isa zsi:book-series;
+    name("The Wheel of Time",%zid%);
+    written-by(robert-jordan, %zid%);
+.

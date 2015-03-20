@@ -1,0 +1,46 @@
+<html>
+<body class="lift:content_id=create-item-form">
+    <div id="create-item-form" class="lift">
+        <head>
+            <link rel="stylesheet" type="text/css" href="/css/_create-item-form.css" />
+        </head>
+
+        <span class="lift:Msg?id=item-created-notification"></span>
+
+        <div class="name-field">
+            <label>Name: </label>
+            <input id="create-item-name" />
+            <span class="lift:Msg?id=name-error;errorClass=error">error</span>
+        </div>
+        <div id="item-type-selection"><label for="select-item-type">Item Type:</label><select id="select-item-type" ></select></div>
+        <div id="trait-selection"><label for="select-trait">Trait:</label><select id="select-trait" ></select></div>
+
+        <ul class="fields">
+            <!-- vertical list of fields -->
+            <li class="field-set simple-field">
+                <h3 class="field-type">Murders</h3>
+                <ul class="field-list">
+                    <li class="field">
+                        <span class="value" ></span>
+                        <a class="remove-field">Remove</a>
+                    </li>
+                </ul>
+                <div class="add-field-input" style="display:none">
+                    <input />
+                </div>
+                <a class="add-field-link">Add</a>
+            </li>
+
+            <!-- Association Table (3 or more roles) -->
+            <li class="field-set complex-field">
+                <h3 class="field-type">Murders</h3>
+                <div class="lift:embed?what=_assoc-table-edit"></div>
+            </li>
+
+        </ul>
+
+        <button id="create-item-button" >Create Item</button>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+
+/* ----------- Item Content ----------- */
+.item_content{
+
+}
+
+.item_name{
+    font-size:26px;
+}
+
+/* owner */
+.item_owner_block {
+    float:left;
+    font-size:90%;
+}
+/* Timestamp */
+.timestamp{
+    float:right;
+}
+.timestamp p{
+    margin:0;
+    font-size:85%;
+}
+
+/* Item Thumbnail */
+.thumbnail_wrapper{
+    float:left;
+    clear:left;
+    width:20%;
+    max-width:130px;
+    min-width: 100px;
+    margin-top:1em;
+    margin-bottom:4px;
+}
+.thumbnail{
+    display:block;
+    max-height:120px;
+    max-width:100px;
+    margin:0 auto;
+}
+/* Item Name */
+.item .name{
+
+}
+.item div.heading{
+    text-align:center;
+}
+.item .name_wrapper{
+    display:inline-block;
+    width:60%;
+    max-width:40em;
+    min-width:150px;
+}
+/* Item Types list */
+.item .types {
+    font-size: 85%;
+    text-align:center;
+}
+
+/* ----------- Worth Bars ----------- */
+.worth_bars{
+    margin-bottom: 1em
+}
+
+.worth_block{
+    clear:left;
+    position:relative;
+    height:18px;
+    margin:2px;
+    z-index: 1;
+}
+.worth_block .currency_icon{
+    position:absolute;
+    left:0;
+}
+.worth_block .currency_amount,.worth_bar{
+    position:absolute;
+    left:14px;
+    right:130px;
+}
+.worth_block .currency_amount{
+    display:block;
+    text-align:center;
+    z-index: 1;
+}
+.worth_bar {
+    border: #EBEBEB 1px solid;
+    padding:1px;
+    top:3px;
+    bottom:3px;
+    z-index: -1;
+}
+.worth_bar .bar{
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    margin:1px;
+}
+.worth_bar .bar.filled{
+    z-index: 1;
+}
+.worth_bar .bar.empty{
+    z-index: -1;
+    right:0;
+}
+.worth_block form{
+    position:absolute;
+    right:0px;
+    top:0;
+    bottom:0;
+}
+.worth_block .invest_input {
+    width:60px;
+}
+.positive.zuth .filled{
+    background-color:#229FFF; /* dark Blue */
+}
+.positive.zuth .empty{
+    background-color:#CDEBFF; /* light Blue */
+}
+.negative.zuth .filled{
+    background-color:#F33675; /* dark Pink */
+}
+.negative.zuth .empty{
+    background-color:#FFD2E2; /* light Pink */
+}
+.positive.money .filled{
+   background-color:#3BBA3B; /* dark Green */
+}
+.positive.money .empty{
+    background-color:#D4FFD4; /* light Green */
+}
+.negative.money .filled{
+    background-color:#FF4747; /* dark Red */
+}
+.negative.money .empty{
+    background-color:#FFDEDE; /* light Red */
+}
+
+/* Item ZID and related_count */
+.zid_block, .related_count{
+    font-size:70%;
+}
+.related_count p{
+    margin:0;
+}
+.zid_block{
+    float:left;
+}
+/* Related Count */
+.related_count{
+    float:right;
+}
+/* make sure item div stretches to include zid and related_count */
+.item .bottom{
+    clear:left;
+}

@@ -1,0 +1,49 @@
+<html>
+<body class="lift:content_id=actualContent">
+<div class="lift:surround?with=master" id="actualContent">
+
+	<!-- Head Merge -->
+    <div class="lift:bind-at?name=head">
+        <head>
+            <title><span class="lift:rolePage.title">Zutha.net - Dejanice (Character) :: Instance Of :: Type</span></title>
+            <link rel="stylesheet" type="text/css" href="/css/role-player-list.css" />
+        </head>
+    </div>
+
+	<!-- Toolbar Binding-->
+	<div class="lift:bind-at?name=toolbar" id="toolbar">
+		<div class="create-item-link"><a href="#">Create Item</a></div>
+	</div>
+
+    <!-- Content Binding -->
+	<div class="lift:bind-at?name=content rounded" id="container" >
+        <div id="item" class="item rounded">
+            <!-- Item Summary bubble -->
+            <div class="lift:rolePage.summary?eager_eval=true">
+                <div class="lift:embed?what=_item-summary"></div>
+            </div>
+        </div>
+
+        <div id="bridge">
+            <h2 class="role_list_name lift:rolePage.roleListName">
+                <a class="role" href="">Item</a> ::
+                <a class="assoc_type" href="">Instance Of</a> ::
+                <a class="other_role" href="">Type</a>
+            </h2>
+        </div>
+
+
+        <div id="role-players" class="lift:rolePage.renderRolePlayers?eager_eval=true">
+            <div class="role-player item rounded">
+                <div class="lift:embed?what=_item-summary"></div>
+            </div>
+        </div>
+
+        <div class="lift:rolePage.renderCreateItemForm?eager_eval=true">
+            <div class="lift:embed?what=_create-item-form"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

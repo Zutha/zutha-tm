@@ -1,0 +1,12 @@
+# ==================== Item Types ====================
+
+# PERSON
+zsi:person %zid%; isa zsi:entity-type;
+    has-trait(zsi:role,%zid%);
+    kind-of(zsi:zutha-object,%zid%);
+
+    name("Person",%zid%);
+
+    may-have-trait(zsi:author,%zid%);
+    may-have-trait(zsi:user,%zid%);
+.

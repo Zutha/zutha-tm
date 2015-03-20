@@ -1,0 +1,38 @@
+
+zsi:technology %zid%; isa zsi:entity-type;
+    kind-of(zsi:entity,%zid%);
+
+    name("Technology",%zid%);
+.
+
+zsi:cryptographic-technology %zid%; isa zsi:entity-type;
+    kind-of(zsi:technology,%zid%);
+
+    name("Cryptographic Technology",%zid%);
+.
+
+zsi:encryption-scheme %zid%; isa zsi:entity-type;
+    kind-of(zsi:cryptographic-technology,%zid%);
+
+    name("Encryption Scheme",%zid%);
+.
+
+# OPENID URI
+zsi:openid-uri %zid%; isa zsi:reified-property-type;
+    kind-of(zsi:reified-property,%zid%);
+
+    name("OpenID URI",%zid%);
+
+    has-datatype(xsd:anyURI,%zid%);
+    has-unique-value(%zid%);
+.
+
+# PUBLIC KEY
+zsi:public-key %zid%; isa zsi:reified-property-type;
+    kind-of(zsi:reified-property,%zid%);
+
+    name("Public Key",%zid%);
+
+    has-datatype(xsd:string,%zid%);
+    has-unique-value(%zid%);
+.

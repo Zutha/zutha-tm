@@ -1,0 +1,47 @@
+<html>
+<body class="lift:content_id=actualContent">
+<div class="lift:surround?with=master" id="actualContent">
+
+	<!-- Head Merge -->
+    <div class="lift:bind-at?name=head">
+        <head>
+            <title><span class="lift:assocPage.title">Zutha.net - Safeway :: Sales Info</span></title>
+            <link rel="stylesheet" type="text/css" href="/css/assoc-table.css" />
+        </head>
+    </div>
+
+	<!-- Toolbar Binding-->
+	<div class="lift:bind-at?name=toolbar" id="toolbar">
+        <div id="edit">
+            <form action="" method="post">
+                <input type="submit" value="Edit" />
+            </form>
+        </div>
+	</div>
+
+    <!-- Content Binding -->
+	<div class="lift:bind-at?name=content rounded" id="container" >
+        <div class="item rounded">
+            <!-- Item Summary bubble -->
+            <div class="lift:assocPage.summary?eager_eval=true">
+                <div class="lift:embed?what=_item-summary"></div>
+            </div>
+        </div>
+
+        <div class="bridge">
+            <h2 class="assoc-table-name lift:assocPage.assocTableName">
+                <a class="role" href="">Item</a> ::
+                <a class="assoc-type" href="">Instance Of</a>
+            </h2>
+        </div>
+
+
+        <div class="item rounded lift:assocPage.assocTable?eager_eval=true" >
+            <div class="lift:embed?what=_assoc-table"></div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

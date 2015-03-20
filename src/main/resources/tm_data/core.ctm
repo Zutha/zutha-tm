@@ -1,0 +1,120 @@
+# ==================== Core Item Types====================
+
+# ------------------- Identity --------------------
+#IDENTITY
+zsi:identity %zid%; isa zsi:entity-type;
+    has-trait(zsi:role,%zid%);
+    kind-of(zsi:zutha-object,%zid%);
+
+    name("Identity",%zid%);
+
+    plays-role(zsi:identity,
+        zsi:user-owns-identity,0,1,%zid%);
+.
+
+# ZUTHA IDENTITY
+#---An authenticated agent that can perform actions on the Zutha knowledgebase
+zsi:zutha-identity %zid%; isa zsi:entity-type;
+    kind-of(zsi:identity,%zid%);
+
+    name("Zutha Identity",%zid%);
+.
+
+# INDEPENDENT ZUTHA IDENTITY
+#---A means of authentication that does not rely on a 3rd party such as a public key
+zsi:independent-zutha-identity %zid%; isa zsi:entity-type;
+    kind-of(zsi:zutha-identity,%zid%);
+
+    name("Independent Zutha Identity",%zid%);
+.
+
+# ASYMMETRIC KEY IDENTITY
+zsi:asymmetric-key-identity %zid%; isa zsi:entity-type;
+    kind-of(zsi:independent-zutha-identity,%zid%);
+
+    name("Asymmetric Key Identity",%zid%);
+
+    has-property(zsi:public-key,1,1,%zid%);
+    plays-role(zsi:asymmetric-key-identity,
+        zsi:asymmetric-key-identity-uses-encryption-scheme,1,1,%zid%);
+.
+
+# DEPENDENT ZUTHA IDENTITY
+#---A means of authentication that relies on a 3rd party to vouch for you on Zutha such as an OpenID or simple password
+zsi:dependent-zutha-identity %zid%; isa zsi:entity-type;
+    kind-of(zsi:zutha-identity,%zid%);
+
+    name("Dependent Zutha Identity",%zid%);
+
+    plays-role(zsi:identity,
+        zsi:zutha-identity-provider-provides-identity,1,1,%zid%);
+.
+
+# OPENID IDENTITY
+zsi:openid-identity %zid%; isa zsi:entity-type;
+    kind-of(zsi:identity,%zid%);
+
+    name("OpenID Identity",%zid%);
+
+    has-property(zsi:openid-uri,1,1,%zid%);
+.
+
+# ==================== Core Traits ====================
+
+# USER
+zsi:user %zid%; isa zsi:trait;
+    has-trait(zsi:role,%zid%);
+
+    name("User",%zid%);
+
+    plays-role(zsi:user,
+        zsi:user-owns-identity,0,*,%zid%);
+.
+
+# ZUTHA IDENTITY PROVIDER
+zsi:zutha-identity-provider %zid%; isa zsi:trait;
+    has-trait(zsi:role,%zid%);
+    
+    name("Zutha Identity Provider",%zid%);
+
+    plays-role(zsi:zutha-identity-provider,
+        zsi:zutha-identity-provider-provides-identity,0,*,%zid%);
+.
+
+# ==================== Core Associations ====================
+
+# USER OWNS IDENTITY
+zsi:user-owns-identity %zid%; isa zsi:reified-association-type;
+    kind-of(zsi:reified-association,%zid%);
+
+    name("User Owns Identity",%zid%);
+    name("Owned By",zsi:identity,%zid%);
+    name("Owns Identities",zsi:identity,%zid%);
+
+    has-role(zsi:user,1,1,%zid%);
+    has-role(zsi:identity,1,1,%zid%);
+.
+
+# ZUTHA IDENTITY PROVIDER PROVIDES IDENTITY
+zsi:zutha-identity-provider-provides-identity %zid%; isa zsi:reified-association-type;
+    kind-of(zsi:reified-association,%zid%);
+    
+    name("Zutha Identity Provider Provides Identity",%zid%);
+
+    has-role(zsi:zutha-identity-provider,1,1,%zid%);
+    has-role(zsi:identity,1,1,%zid%);
+.
+
+# ASYMMETRIC KEY IDENTITY USES ENCRYPTION SCHEME
+zsi:asymmetric-key-identity-uses-encryption-scheme %zid%; isa zsi:reified-association-type;
+    kind-of(zsi:reified-association,%zid%);
+
+    name("Asymmetric Key Identity Use Encryption Scheme",%zid%);
+
+    has-role(zsi:asymmetric-key-identity,1,1,%zid%);
+    has-role(zsi:encryption-scheme,1,1,%zid%);
+.
+
+# ==================== Core Properties ====================
+
+

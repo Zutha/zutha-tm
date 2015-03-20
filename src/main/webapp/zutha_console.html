@@ -1,0 +1,38 @@
+<div class="lift:surround?with=default;at=content">
+	<!-- Head Merge -->
+
+	<head>
+		<title>Zutha Console</title>
+		<link rel="stylesheet" type="text/css" href="/css/zutha_console.css" />
+	</head>
+	
+	<!-- Content Binding -->
+	<div class="header_block">
+        <div class="prefix_block lift:ZuthaConsole.prefixes">
+            <strong>Predefined prefixes:</strong>
+            <div class="prefix_entry">
+                %prefix <span class="prefix"></span> <span class="uri"></span>
+            </div>
+        </div>
+
+        <form class="button_block lift:ZuthaConsole.buttons?form=post">
+            <button class="doSomething">doSomething</button>
+        </form>
+	</div>
+
+
+	<form class="console lift:ZuthaConsole.query?form=post">
+		<textarea cols="100" rows="16"></textarea>
+		<input type="submit" value="Submit" />
+	
+		<div>
+			Query Output:
+			<pre id="query_output"></pre>
+		</div>
+		
+	</form>
+
+
+
+    <div class="lift:Msgs" ></div>
+</div>

@@ -1,0 +1,296 @@
+%prefix zsi http://psi.zutha.net/
+%prefix ztm http://psi.zutha.net/topicmap/
+%prefix tmdm http://psi.topicmaps.org/iso13250/model/
+
+# ==================== General Purpose Templates ====================
+
+# IS A
+def is-a($instance, $type)
+    $instance isa $type.
+    tmdm:type-instance(
+        tmdm:type: $type,
+        tmdm:instance: $instance
+    )
+end
+
+# KIND OF
+def kind-of($subtype, $supertype, $reifier)
+    $reifier isa zsi:supertype-subtype.
+    zsi:supertype-subtype(
+        zsi:subtype: $subtype,
+        zsi:supertype: $supertype
+    ) ~ $reifier
+end
+
+# ITEM HAS TRAIT
+def has-trait($item, $trait, $reifier)
+    $reifier isa zsi:item-has-trait
+    .
+    zsi:item-has-trait(
+        zsi:item: $item,
+        zsi:trait: $trait
+    ) ~ $reifier
+    #topic map implementation
+    ?anon isa ztm:anonymous-topic;
+        ako $trait.
+    $item isa ?anon.
+    ztm:anonymous-topic-link(
+        ztm:reified-zdm-association: $reifier,
+        ztm:anonymous-topic: ?anon
+    )
+end
+
+# PROPERTY
+def property($item, $propType, $value, $reifier)
+    $reifier isa $propType
+    .
+    $item
+    $propType: $value ~ $reifier.
+end
+
+# NAME
+def name($item, $value, $reifier)
+    $reifier isa zsi:name
+    .
+    $item
+        - zsi:name: $value ~ $reifier.
+end
+def name($item, $value, $scope, $reifier)
+    $reifier isa zsi:name
+    .
+    $item
+        - zsi:name: $value @$scope ~$reifier.
+end
+
+# IDENTIFIER
+def identifier($item, $uri, $reifier)
+    $item $uri.
+    property($item, zsi:identifier, $uri, $reifier)
+end
+
+# EXTERNAL IDENTIFIER
+def external-identifier($item, $uri, $reifier)
+    $item $uri.
+    property($item, zsi:external-identifier, $uri, $reifier)
+end
+
+# ==================== Schema Templates ====================
+
+# ABSTRACT CONSTRAINT
+def is-abstract($type, $reifier)
+    $reifier isa zsi:abstract-constraint;
+    .
+    zsi:abstract-constraint(
+        zsi:type: $type
+    ) ~ $reifier
+end
+
+# TYPE HAS ROOT ITEM CONSTRAINT
+def root-of($rootItem, $type, $reifier)
+    $reifier isa zsi:type-has-root-item-constraint;
+    .
+    zsi:type-has-root-item-constraint(
+        zsi:root-item: $rootItem,
+        zsi:type: $type
+    ) ~ $reifier
+end
+def has-root($type, $rootItem, $reifier)
+    root-of($rootItem, $type)
+end
+
+# ITEM TYPE TRAIT DECLARATION
+def may-have-trait($itemType, $trait, $reifier)
+    $reifier isa zsi:item-type-trait-declaration;
+    .
+    zsi:item-type-trait-declaration(
+        zsi:item-type: $itemType,
+        zsi:trait: $trait
+    ) ~ $reifier
+end
+
+# PROPERTY DECLARATION
+def has-property($declarer, $propType, $min, $max, $reifier)
+    $reifier isa zsi:property-declaration;
+        zsi:property-card-min: $min;
+        zsi:property-card-max: $max;
+    .
+    zsi:property-declaration(
+        zsi:property-declarer: $declarer,
+        zsi:property-type: $propType
+    ) ~ $reifier
+end
+def has-property($declarer, $propType, $min, $max, $reifier, $overrides, $overideReifier)
+    has-property($declarer, $propType, $min, $max, $reifier)
+    $overideReifier isa zsi:overrides-declaration
+    .
+    zsi:overrides-declaration(
+        zsi:overriding-declaration: $reifier,
+        zsi:overridden-declaration: $overrides
+    ) ~ $overideReifier
+end
+
+# ASSOCIATION FIELD DECLARATION
+def plays-role($declarer, $role, $assocType, $min, $max, $reifier)
+    $reifier isa zsi:association-field-declaration;
+        zsi:association-card-min: $min;
+        zsi:association-card-max: $max;
+    .
+    zsi:association-field-declaration(
+        zsi:association-field-declarer: $declarer,
+        zsi:role: $role,
+        zsi:association-type: $assocType
+    ) ~ $reifier
+end
+def plays-role($declarer, $role, $assocType, $min, $max, $reifier, $overrides, $overideReifier)
+    plays-role($declarer, $role, $assocType, $min, $max, $reifier)
+    $overideReifier isa zsi:overrides-declaration
+    .
+    zsi:overrides-declaration(
+        zsi:overriding-declaration: $reifier,
+        zsi:overridden-declaration: $overrides
+    ) ~ $overideReifier
+end
+
+# ASSOCIATION ROLE CONSTRAINT
+def has-role($assocType, $role, $min, $max, $reifier)
+    $reifier isa zsi:association-role-constraint;
+        zsi:role-card-min: $min;
+        zsi:role-card-max: $max;
+    .
+    zsi:association-role-constraint(
+        zsi:association-type: $assocType,
+        zsi:role: $role
+    ) ~ $reifier
+end
+def has-role($assocType, $role, $min, $max, $reifier, $overrides, $overideReifier)
+    has-role($assocType, $role, $min, $max, $reifier)
+    $overideReifier isa zsi:overrides-declaration
+    .
+    zsi:overrides-declaration(
+        zsi:overriding-declaration: $reifier,
+        zsi:overridden-declaration: $overrides
+    ) ~ $overideReifier
+end
+
+# ASSOCIATION PROPERTY CONSTRAINT
+def has-assoc-prop($assocType, $propType, $min, $max, $reifier)
+    $reifier isa zsi:association-property-constraint;
+        zsi:property-card-min: $min;
+        zsi:property-card-max: $max;
+    .
+    zsi:association-property-constraint(
+        zsi:association-type: $assocType,
+        zsi:property-type: $propType
+    ) ~ $reifier
+end
+def has-assoc-prop($assocType, $propType, $min, $max, $reifier, $overrides, $overideReifier)
+    has-assoc-prop($assocType, $propType, $min, $max, $reifier)
+    $overideReifier isa zsi:overrides-declaration
+    .
+    zsi:overrides-declaration(
+        zsi:overriding-declaration: $reifier,
+        zsi:overridden-declaration: $overrides
+    ) ~ $overideReifier
+end
+
+# ROLE COMBINATION CONSTRAINT
+def role-combination($assocType,$role1,$itemType1,$role2,$itemType2,$comboItem,$reifier0,$reifier1,$reifier2)
+    $comboItem isa zsi:role-combination.
+    $reifier0 isa zsi:association-has-role-combination-constraint.
+    $reifier1 isa zsi:role-combination-constraint.
+    $reifier2 isa zsi:role-combination-constraint.
+    
+    zsi:association-has-role-combination-constraint(
+        zsi:role-combination: $comboItem,
+        zsi:association-type: $assocType
+    ) ~ $reifier0
+    zsi:role-combination-constraint(
+        zsi:role-combination: $comboItem,
+        zsi:role: $role1,
+        zsi:type: $itemType1
+    ) ~ $reifier1
+    zsi:role-combination-constraint(
+        zsi:role-combination: $comboItem,
+        zsi:role: $role2,
+        zsi:type: $itemType2
+    ) ~ $reifier2
+end
+
+# FIELD HAS SCOPE ITEM CONSTRAINT
+def has-scope-item($fieldType, $scopeItem, $min, $max, $reifier)
+    $reifier isa zsi:field-has-scope-item-constraint;
+        zsi:scope-item-card-min: $min;
+        zsi:scope-item-card-max: $max;
+    .
+    zsi:field-has-scope-item-constraint(
+        zsi:field-type: $fieldType,
+        zsi:scope-item: $scopeItem
+    ) ~ $reifier
+end
+
+# FIELD HAS SCOPE ITEM TYPE CONSTRAINT
+def has-scope-item-type($fieldType, $scopeItemType, $min, $max, $reifier)
+    $reifier isa zsi:field-has-scope-item-type-constraint;
+        zsi:scope-item-type-card-min: $min;
+        zsi:scope-item-type-card-max: $max;
+    .
+    zsi:field-has-scope-item-type-constraint(
+        zsi:field-type: $fieldType,
+        zsi:scope-item-type: $scopeItemType
+    ) ~ $reifier
+end
+
+# FIELD WITH SCOPE ITEM DECLARATION
+def has-scope-item($declarer, $fieldType, $scopeItem, $min, $max, $reifier)
+    $reifier isa zsi:field-with-scope-item-declaration;
+        zsi:field-card-min: $min;
+        zsi:field-card-max: $max;
+    .
+    zsi:field-with-scope-item-declaration(
+        zsi:field-declarer: $declarer,
+        zsi:field-type: $fieldType,
+        zsi:scope-item: $scopeItem
+    ) ~ $reifier
+end
+
+# FIELD WITH SCOPE ITEM TYPE DECLARATION
+def has-scope-item-type($declarer, $fieldType, $scopeItemType, $min, $max, $reifier)
+    $reifier isa zsi:field-with-scope-item-type-declaration;
+        zsi:field-card-min: $min;
+        zsi:field-card-max: $max;
+    .
+    zsi:field-with-scope-item-type-declaration(
+        zsi:field-declarer: $declarer,
+        zsi:field-type: $fieldType,
+        zsi:scope-item-type: $scopeItemType
+    ) ~ $reifier
+end
+
+# UNIQUE VALUE CONSTRAINT
+def has-unique-value($propType, $reifier)
+    $reifier isa zsi:unique-value-constraint;
+    .
+    zsi:unique-value-constraint(
+        zsi:property-type: $propType
+    ) ~ $reifier
+end
+
+# PROPERTY DATA TYPE CONSTRAINT
+def has-datatype($propType, $dataType, $reifier)
+    $reifier isa zsi:property-datatype-constraint;
+    .
+    zsi:property-datatype-constraint(
+        zsi:property-type: $propType,
+        zsi:datatype: $dataType
+    ) ~ $reifier
+end
+
+# REGULAR EXPRESSION CONSTRAINT
+def matches-regexp($propType, $regexp, $reifier)
+    $reifier isa zsi:regular-expression-constraint;
+        zsi:regexp: $regexp;
+    .
+    zsi:regular-expression-constraint(
+        zsi:property-type: $propType
+    ) ~ $reifier
+end

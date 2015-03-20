@@ -1,0 +1,1 @@
+java -Xmx512M -XX:MaxPermSize=512m -noverify -Drebel.lift_plugin=true -jar "D:\Programs\Simple Build Tool\sbt-launch.jar" 

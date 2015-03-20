@@ -1,0 +1,70 @@
+
+
+/**************** Fields *********************/
+.fields{
+    padding-left:0;
+    margin:0.5em 0;
+}
+.field-group {
+    margin: 50px 25px;
+    border: 1.5px solid #C3DAFF;
+    background: white;
+    padding: 2px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+.field-group-heading {
+    text-align: center;
+    position: relative;
+    top: -20px;
+    font-family: "Baskerville", Times, "Times New Roman", serif;
+    color: #666;
+    margin-bottom: -15px;
+    font-size:20px;
+    font-weight:normal;
+
+}
+.field-group-name {
+    color: #666;
+    text-align:center;
+    background: white;
+    padding: 0.35em 1.5em;
+}
+.field-group > ul{
+    padding-left:1.5em;
+}
+.field-group ul li:last-child{
+    border-bottom: 0;
+}
+.field {
+    list-style-type: none;
+    margin: 0 1em 0.5em 1em;
+    padding: 0.5em 1em;
+    border-bottom: 1px solid #DEE3E4;
+    overflow: hidden;
+}
+.field-type {
+    float: left;
+    display: inline;
+    width: 25%;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.more-link {
+    display: block;
+    text-align: right;
+    font-size: 0.85em;
+    margin-top: 1em;
+    font-weight: bold;
+}
+
+/* Simple Fields */
+ul.field-list{
+    margin-left: 25%;
+    padding-left:0;
+}
+li.value {
+    list-style-type: none;
+}

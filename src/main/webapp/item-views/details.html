@@ -1,0 +1,65 @@
+<html>
+<body class="lift:content_id=details">
+<div class="lift:surround?with=master" id="details">
+
+	<!-- Head Merge -->
+    <div class="lift:bind-at?name=head">
+        <head>
+            <title><span class="lift:itemPage.title">Zutha.net - Dejanice (Character)</span></title>
+            <link rel="stylesheet" type="text/css" href="/css/details.css" />
+        </head>
+    </div>
+	
+	<!-- Toolbar Binding-->
+	<div class="lift:bind-at?name=toolbar" id="toolbar">
+		<div id="edit">
+            <form action="" method="post">
+                <input type="submit" value="Edit" />
+            </form>
+		</div>
+	</div>
+
+    <!-- Content Binding -->
+	<div class="lift:bind-at?name=content" id="container" >
+        <div class="item rounded">
+            <!-- Item Summary bubble -->
+            <div class="lift:itemPage.summary?eager_eval=true">
+                <div class="lift:embed?what=_item-summary"></div>
+            </div>
+
+            <hr />
+
+            <!--  Item Fields -->
+            <div class="fields lift:details?eager_eval=true">
+                <div class="field-group">
+                    <h2 class="field-group-heading"><span class="field-group-name">Character</span></h2>
+                    
+                    <ul>
+                        <!-- vertical list of fields -->
+                        <li class="field simple-field">
+                            <h3 class="field-type">Murders</h3>
+                            <ul class="field-list">
+                                <li class="value">
+                                    <a href="#7oeHH">http://en.wikipedia.org/Dejanice_(Character)</a>
+                                </li>
+                            </ul>
+                            <a class="more-link" href="">View all <span class="other-role-plural"></span>s »</a>
+                        </li>
+
+                        <!-- Association Table (3 or more members) -->
+                        <li class="field complex-field">
+                            <h3 class="field-type">Murders</h3>
+                            <div class="lift:embed?what=_assoc-table"></div>
+                            <a class="more-link" href="">View entire collection »</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+	</div>
+
+</div>
+</body>
+</html>
